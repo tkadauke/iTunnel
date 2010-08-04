@@ -1,0 +1,52 @@
+iTunnel
+=======
+
+iTunnel is probably the smallest useful RubyCocoa application ever. It also is my first one-hour
+attempt to using RubyCocoa.
+
+iTunnel puts itself in the menu bar and presents you configurable hosts to open and close SSH
+tunnels. No more, no less.
+
+Configuration
+=============
+
+Configuration is in YAML format. Create a file in your home directory called .itunnels with the
+configuration in the following format for each host:
+
+-
+  name: My SSH Tunnel
+  host: myhost.example.com
+  login: username
+  local_port: 1234
+  remote_port 5678
+  url: /
+
+The dash on its own line is important. The configuration parameters are the parts the SSH tunnel
+command. The url parameter specifies the relative URL that is to be opened by the web browser as
+soon as the tunnel is established (actually, iTunnel just waits 2 seconds and then opens the
+browser, regardless if the tunnel is actually open yet).
+
+Note that there is no password parameter. If you want to use iTunnel with your remote host, make
+sure your specified user uses an SSH key.
+
+Getting it
+==========
+
+git clone it, or look in the Downloads section on github.
+
+License
+=======
+
+MIT.
+
+Hacking
+=======
+
+Fork. Hack. Pull Request.
+
+Credits
+=======
+
+Although I did not copy & paste code, the macistrano application (http://github.com/mattmatt/macistrano)
+was of great help and inspiration for iTunnel, mainly because it is very similar in its minimalistic
+user interface.
