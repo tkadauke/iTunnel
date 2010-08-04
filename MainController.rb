@@ -29,10 +29,7 @@ class MainController < OSX::NSWindowController
     else
       tunnel.open
       sender.setState(OSX::NSOnState)
-      fork do
-        sleep 2
-        system "open http://localhost:#{tunnel.local_port}#{tunnel.url}"
-      end
+      wait_and_open_browser(tunnel)
     end
   end
   
@@ -50,6 +47,11 @@ private
     @tunnels = config.map do |hash|
       Tunnel.new(hash['name'], hash['login'], hash['host'], hash['remote_port'], hash['local_port'], hash['url'])
     end
+  end
+  
+  def wait_and_open_browser(tunnel)
+    # apparently we can't use sleep in RubyCocoa, because things crash reliably when we do
+    system "sleep 2; open http://localhost:#{tunnel.local_port}#{tunnel.url}"
   end
   
   def create_status_bar
