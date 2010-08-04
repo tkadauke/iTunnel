@@ -18,7 +18,7 @@ configuration in the following format for each host:
   host: myhost.example.com
   login: username
   local_port: 1234
-  remote_port 5678
+  remote_port: 5678
   url: /
 
 The dash on its own line is important. The configuration parameters are the parts the SSH tunnel
